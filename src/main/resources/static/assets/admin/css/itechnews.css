@@ -1,0 +1,34 @@
+
+.message-alert {
+  position: absolute;
+  top: 138px;
+  right: 29px;
+  z-index: 2;
+  transition: top 1s, opacity 1.5s, visibility 1.5s;
+  visibility: hidden;
+  opacity: 0.0;
+}
+
+.message-alert-effect {
+  top: 86px;
+  visibility: visible;
+  opacity: 1;
+}
+.card-body  .row .col-lg-3 .round-img a img{
+  width: 180px;
+}
+.postImage{
+  width: 50%;
+}
+.avaImage{
+  width: 50px;
+}
+.userLikePost{
+  padding-top: 10px;
+}
+.userLike{
+  margin-bottom: 10px;
+}
+.buttonUser{
+  padding-top: 5px;
+}

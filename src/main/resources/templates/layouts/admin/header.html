@@ -1,0 +1,43 @@
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="header"
+          xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <!-- Header-->
+    <header id="header" class="header">
+        <div class="top-left">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/admin/user/index"><img th:src="@{/assets/admin/images/logo.png}" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="/admin/user/index"><img th:src="@{/assets/admin/images/logo2.png}" alt="Logo"></a>
+                <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+            </div>
+        </div>
+        <div class="top-right">
+            <div class="header-menu">
+                <div class="header-left">
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="user-avatar rounded-circle" th:src="@{'/upload/'+${T(com.itechnews.security.UserDetailsUtil).getUserDetails().getImage()}}" alt="User Avatar">
+                    </a>
+
+                    <div class="user-menu dropdown-menu">
+                        <th:block sec:authorize="isAuthenticated()">
+                            <a class="nav-link" href="#" style="text-decoration: underline">
+                                <i class="fa fa- user"></i><th:block
+                                    th:text="${T(com.itechnews.security.UserDetailsUtil).getUserDetails().getUsername()}" />
+                            </a>
+                            <form th:action="@{/logout}" method="post">
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                <button style="background: none!important;border: none;padding: 0!important;cursor: pointer;"
+                                        class="nav-link" type="submit" value="Logout" >
+                                    <i class="fa fa-power -off"></i>Đăng xuất
+                                </button>
+                            </form>
+                        </th:block>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- /#header -->
+
+</th:block>

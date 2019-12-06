@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="url" th:content="${@environment.getProperty('app.url')}"/>
+		<meta name="_csrf" th:content="${_csrf.token}"/>
+		<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+		<title th:text="${title == null ? 'itechnews.com' : title}"></title>
+
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" th:href="@{/assets/public/css/bootstrap.min.css}"/>
+		<link type="text/css" rel="stylesheet" th:href="@{/assets/public/css/font-awesome.min.css}"/>
+		<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">-->
+		<link type="text/css" rel="stylesheet" th:href="@{/assets/public/css/style.css}"/>
+		<link type="text/css" rel="stylesheet" th:href="@{/assets/public/css/animate.css}"/>
+		<link type="text/css" rel="stylesheet" th:href="@{/assets/public/css/itechnews.css}"/>
+		<link type="text/css" rel="stylesheet" th:href="@{/assets/public/css/thinh.css}"/>
+
+
+		<th:block layout:fragment="pageStyleSheet" />
+    </head>
+	<body>
+
+		<!-- Header -->
+		<header id="header">
+			<!--top header-->
+			<th:block th:replace="'../layouts/public/header' :: header" />
+			<!--page-header-->
+			<th:block layout:fragment="page-header" />
+		</header>
+		<!-- /Header -->
+
+        <!--more-content in template.html-->
+        <th:block layout:fragment="more-content" />
+
+		<!-- section -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row" layout:fragment="main-content"><!--main-content for contact.html template-->
+					<!--content-->
+					<th:block layout:fragment="content" />
+
+					<!--aside-->
+					<th:block th:replace="'../layouts/public/sidebar' :: sidebar" />
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /section -->
+
+		<!-- Footer -->
+		<th:block th:replace="'../layouts/public/footer' :: footer" />
+		<a href="javascript:void(0);" id="scroll" style="display: none;">Top<span></span></a>
+		<!-- /Footer -->
+
+		<!-- jQuery Plugins -->
+		<script th:src="@{/assets/public/js/jquery.min.js}"></script>
+		<script th:src="@{/assets/public/js/bootstrap.min.js}"></script>
+		<script th:src="@{/assets/public/js/main.js}"></script>
+		<script th:src="@{/assets/public/js/itechnews.js}"></script>
+
+		<th:block layout:fragment="pageScript" />
+
+	</body>
+</html>

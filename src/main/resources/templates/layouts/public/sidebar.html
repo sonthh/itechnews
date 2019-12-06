@@ -1,0 +1,44 @@
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="sidebar">
+    <div class="col-md-4">
+        <!-- post widget -->
+        <div class="aside-widget">
+            <div class="section-title">
+                <h2>Xem nhiều</h2>
+            </div>
+
+            <div class="post post-widget" th:each="post, iter : ${mostRead}">
+                <a class="post-img post3" th:href="@{/blog-post}"><img th:src="@{'/upload/'+${post.image}}" alt=""></a>
+                <div class="post-body">
+                    <h3 class="post-title"><a th:href="@{'/'+${post.slug}}" th:text="${post.title}"></a></h3>
+                </div>
+            </div>
+        </div>
+        <!-- /post widget -->
+
+        <!-- catagories -->
+        <div class="aside-widget">
+            <div class="section-title">
+                <h2>Danh mục</h2>
+            </div>
+            <div class="category-widget">
+                <ul>
+                    <li th:each="category, iter : ${categories}">
+                        <a th:href="@{/tag}" th:class="'cat-'+${iter.index+1}" th:utext="${category.name}+'<span>'+${category.posts.size()}+'</span>'"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /catagories -->
+
+        <!-- tags -->
+        <div class="aside-widget">
+            <div class="tags-widget">
+                <ul>
+                    <li th:each="tag, iter : ${bestTags}"><a th:href="@{/tag}" th:text="${tag.name}"></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /tags -->
+
+    </div>
+</th:block>
